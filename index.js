@@ -1,2 +1,2 @@
-module.exports = require('./dist/bundle.js');
+module.exports = require('./src/rebase.js');
 

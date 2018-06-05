@@ -1,7 +1,7 @@
 //helpers
 import { throwError } from './lib/utils';
 import { _validateDatabase } from './lib/validators';
-import firebase from 'firebase/app';
+import firebase from 'firebase'
 
 //database
 import _push from './lib/push';
@@ -25,7 +25,7 @@ import _fsRemoveFromCollection from './lib/fsRemoveFromCollection';
 import _fsUpdateDoc from './lib/fsUpdateDoc';
 import _fsReset from './lib/fsReset';
 
-module.exports = (function() {
+export default (function() {
   function init(db) {
     return (function() {
       var refs = new Map();

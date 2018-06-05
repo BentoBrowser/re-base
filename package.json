@@ -8,8 +8,8 @@
     "url": "https://github.com/tylermcginnis/re-base"
   },
   "author": "Tyler McGinnis and Jacob Turner",
-  "dependencies": {
-    "firebase": "^4.5.0"
+  "peerDependencies": {
+    "firebase": "^5.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.18.0",
@@ -38,5 +38,8 @@
     "test": "cross-env NODE_ENV=test karma start tests/karma.conf.js",
     "travis": "./node_modules/karma/bin/karma start tests/karma.conf.js"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "firebase": "^5.0.4"
+  }
 }
