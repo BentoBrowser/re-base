@@ -86,8 +86,7 @@ const _validateEndpoint = function(endpoint) {
     const { DocumentReference, CollectionReference } = firebase.firestore;
     if (typeof endpoint === 'object') {
       if (
-        endpoint.constructor.name == "DocumentReference" ||
-        endpoint.constructor.name == "CollectionReference"
+        endpoint.firestore && endpoint.path
       ) {
         return;
       }
@@ -122,7 +121,8 @@ const _validateDatabase = function(db) {
 };
 
 const _validateDocumentPath = function(path) {
-  if (typeof path === 'object' && path.constructor.name == "DocumentReference") return;
+  let fbase = firebase;
+  if (typeof path === 'object' && path.firestore && path.path) return;
   var defaultError = 'Invalid document path or reference.';
   if (typeof path !== 'string') _throwError(defaultError, 'INVALID_ENDPOINT');
   const segmentCount = _getSegmentCount(path);
@@ -130,7 +130,7 @@ const _validateDocumentPath = function(path) {
 };
 
 const _validateCollectionPath = function(path) {
-  if (typeof path === 'object' && path.constructor.name == "CollectionReference") return;
+  if (typeof path === 'object' && path.firestore && path.path) return;
   var defaultError = 'Invalid collection path or reference.';
   if (typeof path !== 'string') _throwError(defaultError, 'INVALID_ENDPOINT');
   const segmentCount = _getSegmentCount(path);
