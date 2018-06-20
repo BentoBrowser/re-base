@@ -130,7 +130,7 @@ const _validateDocumentPath = function(path) {
 };
 
 const _validateCollectionPath = function(path) {
-  if (typeof path === 'object' && path.firestore && path.path) return;
+  if (typeof path === 'object' && path.firestore && (path.path || path._query)) return;
   var defaultError = 'Invalid collection path or reference.';
   if (typeof path !== 'string') _throwError(defaultError, 'INVALID_ENDPOINT');
   const segmentCount = _getSegmentCount(path);
